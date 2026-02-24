@@ -48,7 +48,7 @@
     top: 0; left: 0; width: 100%; height: 100%;
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
-    z-index: 1;
+    z-index: 9999;
   }
 
   /* === NAVIGATION === */
@@ -605,19 +605,6 @@
     line-height: 1.7;
   }
 
-  /* Accordion toggle icon — hidden on desktop */
-  .why-toggle {
-    display: none;
-  }
-
-  .why-card-header {
-    display: block;
-  }
-
-  .why-card-body {
-    display: block;
-  }
-
   /* === QUOTE BANNER === */
   .quote-banner {
     background: var(--gold);
@@ -943,59 +930,6 @@
     .retailer-badge { padding: 16px 24px; }
     .retailer-badge h3 { font-size: 28px; }
     footer { padding: 48px 24px 32px; }
-
-    /* Why cards → accordion on mobile */
-    .why-grid {
-      grid-template-columns: 1fr;
-      gap: 0;
-      margin-top: 32px;
-    }
-    .why-card {
-      padding: 0;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(212,169,71,0.15);
-    }
-    .why-card:hover { transform: none; border-color: rgba(212,169,71,0.15); }
-    .why-card:first-child { border-top: 1px solid rgba(212,169,71,0.15); }
-    .why-number { display: none; }
-    .why-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 4px;
-      cursor: pointer;
-    }
-    .why-card h4 {
-      font-size: 22px;
-      margin-bottom: 0;
-      pointer-events: none;
-    }
-    .why-toggle {
-      display: block;
-      color: var(--gold);
-      font-size: 24px;
-      transition: transform 0.3s;
-      flex-shrink: 0;
-      margin-left: 12px;
-      line-height: 1;
-    }
-    .why-card.open .why-toggle { transform: rotate(45deg); }
-    .why-card-body {
-      display: block;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease, opacity 0.3s ease;
-      opacity: 0;
-    }
-    .why-card.open .why-card-body {
-      max-height: 200px;
-      opacity: 1;
-    }
-    .why-card p {
-      padding: 0 4px 20px;
-      font-size: 14px;
-    }
   }
 </style>
 </head>
@@ -1238,65 +1172,35 @@
   <div class="section-title">Why Go Big?</div>
 
   <div class="why-grid">
-    <div class="why-card" onclick="toggleWhy(this)">
+    <div class="why-card">
       <span class="why-number">01</span>
-      <div class="why-card-header">
-        <h4>Designed from Scratch</h4>
-        <span class="why-toggle">+</span>
-      </div>
-      <div class="why-card-body">
-        <p>We didn't clone someone else's homework. The Candingo was engineered from a blank page — not a copy-paste from an Alibaba catalog with a new logo slapped on.</p>
-      </div>
+      <h4>Designed from Scratch</h4>
+      <p>We didn't clone someone else's homework. The Candingo was engineered from a blank page — not a copy-paste from an Alibaba catalog with a new logo slapped on.</p>
     </div>
-    <div class="why-card" onclick="toggleWhy(this)">
+    <div class="why-card">
       <span class="why-number">02</span>
-      <div class="why-card-header">
-        <h4>17-4 Stainless Steel</h4>
-        <span class="why-toggle">+</span>
-      </div>
-      <div class="why-card-body">
-        <p>The same grade of steel used in aerospace and surgical tools. Your suppressor is basically an astronaut surgeon. You're welcome.</p>
-      </div>
+      <h4>17-4 Stainless Steel</h4>
+      <p>The same grade of steel used in aerospace and surgical tools. Your suppressor is basically an astronaut surgeon. You're welcome.</p>
     </div>
-    <div class="why-card" onclick="toggleWhy(this)">
+    <div class="why-card">
       <span class="why-number">03</span>
-      <div class="why-card-header">
-        <h4>Full Auto Rated</h4>
-        <span class="why-toggle">+</span>
-      </div>
-      <div class="why-card-body">
-        <p>The Candingo doesn't flinch. Send it as fast as your trigger finger and your tax stamp allow — this can is rated for full auto and won't break a sweat.</p>
-      </div>
+      <h4>Full Auto Rated</h4>
+      <p>The Candingo doesn't flinch. Send it as fast as your trigger finger and your tax stamp allow — this can is rated for full auto and won't break a sweat.</p>
     </div>
-    <div class="why-card" onclick="toggleWhy(this)">
+    <div class="why-card">
       <span class="why-number">04</span>
-      <div class="why-card-header">
-        <h4>Born in Florida</h4>
-        <span class="why-toggle">+</span>
-      </div>
-      <div class="why-card-body">
-        <p>If it can survive Florida summers, humidity, mosquitoes, and the general lawlessness of the Panhandle — it can survive your range day.</p>
-      </div>
+      <h4>Born in Florida</h4>
+      <p>If it can survive Florida summers, humidity, mosquitoes, and the general lawlessness of the Panhandle — it can survive your range day.</p>
     </div>
-    <div class="why-card" onclick="toggleWhy(this)">
+    <div class="why-card">
       <span class="why-number">05</span>
-      <div class="why-card-header">
-        <h4>"If It Fits, It Ships"</h4>
-        <span class="why-toggle">+</span>
-      </div>
-      <div class="why-card-body">
-        <p>That's our warranty. No runaround, no 47-page claim form, no "well actually." If it fits, it ships. We stand behind our cans the way our rooster stands behind his AR.</p>
-      </div>
+      <h4>"If It Fits, It Ships"</h4>
+      <p>That's our warranty. No runaround, no 47-page claim form, no "well actually." If it fits, it ships. We stand behind our cans the way our rooster stands behind his AR.</p>
     </div>
-    <div class="why-card" onclick="toggleWhy(this)">
+    <div class="why-card">
       <span class="why-number">06</span>
-      <div class="why-card-header">
-        <h4>Exclusive to FDC Members</h4>
-        <span class="why-toggle">+</span>
-      </div>
-      <div class="why-card-body">
-        <p>The Candingo is only available through Firearms Direct Club. You'll need a membership to buy — but that's a small price to pay for a can this good at $499.99.</p>
-      </div>
+      <h4>Exclusive to FDC Members</h4>
+      <p>The Candingo is only available through Firearms Direct Club. You'll need a membership to buy — but that's a small price to pay for a can this good at $499.99.</p>
     </div>
   </div>
 </section>
@@ -1390,12 +1294,6 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMobileMenu();
   });
-
-  // ─── WHY ACCORDION (mobile only) ───
-  function toggleWhy(card) {
-    if (window.innerWidth > 768) return; // only on mobile
-    card.classList.toggle('open');
-  }
 
   // ─── REVIEWS SLIDER ───
   const track = document.getElementById('reviewTrack');
