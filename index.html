@@ -598,6 +598,10 @@
     line-height: 1.7;
   }
 
+  .why-toggle {
+    display: none;
+  }
+
   /* === QUOTE BANNER === */
   .quote-banner {
     background: var(--gold);
@@ -923,6 +927,57 @@
     .retailer-badge { padding: 16px 24px; }
     .retailer-badge h3 { font-size: 28px; }
     footer { padding: 48px 24px 32px; }
+
+    /* Why cards → accordion on mobile */
+    .why-grid {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 32px;
+    }
+    .why-card {
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(212,169,71,0.15);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .why-card:first-child { border-top: 1px solid rgba(212,169,71,0.15); }
+    .why-card:hover { transform: none; border-color: rgba(212,169,71,0.15); }
+    .why-number { display: none; }
+    .why-card h4 {
+      font-size: 22px;
+      margin-bottom: 0;
+      padding: 20px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .why-toggle {
+      display: inline-block;
+      color: var(--gold);
+      font-size: 24px;
+      font-weight: 400;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 12px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .why-card.open .why-toggle { transform: rotate(45deg); }
+    .why-card p {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
+      opacity: 0;
+      padding: 0 4px;
+      font-size: 14px;
+    }
+    .why-card.open p {
+      max-height: 200px;
+      opacity: 1;
+      padding: 0 4px 20px;
+    }
   }
 </style>
 </head>
@@ -1167,32 +1222,32 @@
   <div class="why-grid">
     <div class="why-card">
       <span class="why-number">01</span>
-      <h4>Designed from Scratch</h4>
+      <h4>Designed from Scratch <span class="why-toggle">+</span></h4>
       <p>We didn't clone someone else's homework. The Candingo was engineered from a blank page — not a copy-paste from an Alibaba catalog with a new logo slapped on.</p>
     </div>
     <div class="why-card">
       <span class="why-number">02</span>
-      <h4>17-4 Stainless Steel</h4>
+      <h4>17-4 Stainless Steel <span class="why-toggle">+</span></h4>
       <p>The same grade of steel used in aerospace and surgical tools. Your suppressor is basically an astronaut surgeon. You're welcome.</p>
     </div>
     <div class="why-card">
       <span class="why-number">03</span>
-      <h4>Full Auto Rated</h4>
+      <h4>Full Auto Rated <span class="why-toggle">+</span></h4>
       <p>The Candingo doesn't flinch. Send it as fast as your trigger finger and your tax stamp allow — this can is rated for full auto and won't break a sweat.</p>
     </div>
     <div class="why-card">
       <span class="why-number">04</span>
-      <h4>Born in Florida</h4>
+      <h4>Born in Florida <span class="why-toggle">+</span></h4>
       <p>If it can survive Florida summers, humidity, mosquitoes, and the general lawlessness of the Panhandle — it can survive your range day.</p>
     </div>
     <div class="why-card">
       <span class="why-number">05</span>
-      <h4>"If It Fits, It Ships"</h4>
+      <h4>"If It Fits, It Ships" <span class="why-toggle">+</span></h4>
       <p>That's our warranty. No runaround, no 47-page claim form, no "well actually." If it fits, it ships. We stand behind our cans the way our rooster stands behind his AR.</p>
     </div>
     <div class="why-card">
       <span class="why-number">06</span>
-      <h4>Exclusive to FDC Members</h4>
+      <h4>Exclusive to FDC Members <span class="why-toggle">+</span></h4>
       <p>The Candingo is only available through Firearms Direct Club. You'll need a membership to buy — but that's a small price to pay for a can this good at $499.99.</p>
     </div>
   </div>
@@ -1295,6 +1350,15 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeMobileMenu();
   });
+
+  // ─── WHY ACCORDION (mobile only) ───
+  var whyCards = document.querySelectorAll('.why-card');
+  for (var w = 0; w < whyCards.length; w++) {
+    whyCards[w].addEventListener('click', function() {
+      if (window.innerWidth > 768) return;
+      this.classList.toggle('open');
+    });
+  }
 
   // ─── REVIEWS SLIDER ───
   var track = document.getElementById('reviewTrack');
