@@ -778,14 +778,25 @@
     .product-grid { grid-template-columns: 1fr; gap: 48px; }
     .product-section { padding: 72px 24px; }
     .reviews-section { padding: 72px 16px; }
-    .slider-arrow { width: 40px; height: 40px; font-size: 24px; }
-    .review-card { padding: 36px 20px; }
-    .review-text { font-size: 17px; }
+    .slider-wrapper { flex-direction: column; gap: 20px; }
+    .slider-arrow { display: none; }
+    .review-card { padding: 36px 24px; }
+    .review-text { font-size: 16px; }
     .mascot-section { padding: 72px 24px; }
     .mascot-emoji { width: 140px; height: 140px; }
     .specs-grid { grid-template-columns: 1fr; }
+    .hero-cta { flex-direction: column; align-items: center; }
+    .hero-cta .btn-primary, .hero-cta .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
     .quote-banner { padding: 48px 24px; }
     .buy-section { padding: 80px 24px; }
+    .buy-section .btn-primary, .buy-section .btn-secondary {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin: 0 0 12px 0 !important;
+    }
+    .retailer-badge { padding: 16px 24px; }
+    .retailer-badge h3 { font-size: 28px; }
     footer { padding: 48px 24px 32px; }
   }
 </style>
@@ -1093,7 +1104,7 @@
     <div class="footer-links">
       <h5>Follow the Rooster</h5>
       <a href="https://www.facebook.com/profile.php?id=61583499460098" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.instagram.com/bbc_suppressors/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/bbc_supressors/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.youtube.com/@TacticallyInappropriate" target="_blank" rel="noopener">YouTube</a>
     </div>
   </div>
