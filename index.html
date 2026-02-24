@@ -7,12 +7,10 @@
 <meta name="description" content="BBC Suppressors — Big Black Cans. Home of the Candingo .36 cal multi-purpose suppressor. Designed from scratch in Milton, Florida. 17-4 stainless steel. Exclusively at Firearms Direct Club.">
 <meta property="og:title" content="BBC Suppressors — Big Black Cans">
 <meta property="og:description" content="Home of the Candingo .36 cal multi-purpose suppressor. Loud personality. Quiet performance. Milton, FL.">
-<meta property="og:image" content="https://bbcsuppressors.com/rooster.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BBC Suppressors — Big Black Cans">
 <meta name="twitter:description" content="Home of the Candingo .36 cal multi-purpose suppressor. Loud personality. Quiet performance.">
-<meta name="twitter:image" content="https://bbcsuppressors.com/rooster.png">
 <link rel="icon" type="image/png" href="rooster.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -964,7 +962,7 @@
   <a href="#buy" onclick="closeMobileMenu()">Buy Now</a>
   <div class="mobile-menu-footer">
     <p>Milton, FL &bull; Est. 2025</p>
-    <a href="/cdn-cgi/l/email-protection#13707c7d677270675371717060666363617660607c61603d707c7e"><span class="__cf_email__" data-cfemail="f3909c9d87929087b391919080868383819680809c8180dd909c9e">[email&#160;protected]</span></a>
+    <a href="mailto:contact@bbcsuppressors.com">contact@bbcsuppressors.com</a>
   </div>
 </div>
 
@@ -1067,7 +1065,7 @@
 
       <div style="margin-top:40px; display:flex; gap:16px; flex-wrap:wrap;">
         <a href="#buy" class="btn-primary" target="_blank" rel="noopener">Buy Now — $499.99</a>
-        <a href="/cdn-cgi/l/email-protection#a9cac6c7ddc8cadde9cbcbcadadcd9d9dbccdadac6dbda87cac6c4" class="btn-secondary">Ask Us Anything</a>
+        <a href="mailto:contact@bbcsuppressors.com" class="btn-secondary">Ask Us Anything</a>
       </div>
     </div>
   </div>
@@ -1223,7 +1221,7 @@
 
   <div>
     <a href="https://firearmsdirectclub.com/home/bbc-suppressors-candingo-36-cal-suppressor/?aff=FDC" class="btn-primary" style="margin-right:12px;" target="_blank" rel="noopener">Buy the Candingo</a>
-    <a href="/cdn-cgi/l/email-protection#05666a6b716466714567676676707575776076766a77762b666a68" class="btn-secondary">Questions? Email Us</a>
+    <a href="mailto:contact@bbcsuppressors.com" class="btn-secondary">Questions? Email Us</a>
   </div>
 </section>
 
@@ -1239,13 +1237,13 @@
         </div>
       </div>
       <p style="margin-top:12px;">Loud personality. Quiet performance. Florida's finest suppressor company, featuring the world's most armed poultry.</p>
-      <p style="margin-top:12px;"><a href="/cdn-cgi/l/email-protection#77141819031614033715151404020707051204041805045914181a" style="color:var(--gold); text-decoration:none;"><span class="__cf_email__" data-cfemail="b7d4d8d9c3d6d4c3f7d5d5d4c4c2c7c7c5d2c4c4d8c5c499d4d8da">[email&#160;protected]</span></a></p>
+      <p style="margin-top:12px;"><a href="mailto:contact@bbcsuppressors.com" style="color:var(--gold); text-decoration:none;">contact@bbcsuppressors.com</a></p>
     </div>
     <div class="footer-links">
       <h5>Company</h5>
       <a href="#about">About Us</a>
       <a href="#candingo">The Candingo</a>
-      <a href="/cdn-cgi/l/email-protection#9bf8f4f5effaf8efdbf9f9f8e8eeebebe9fee8e8f4e9e8b5f8f4f6">Contact</a>
+      <a href="mailto:contact@bbcsuppressors.com">Contact</a>
       <a href="#reviews">Reviews</a>
     </div>
     <div class="footer-links">
@@ -1261,7 +1259,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ─── MOBILE MENU ───
   function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
@@ -1319,4 +1317,22 @@
     goToSlide(currentSlide + direction);
   }
 
-  function res
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 8000);
+  }
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) slideReviews(diff > 0 ? 1 : -1);
+  }, { passive: true });
+
+  resetAutoSlide();
+</script>
+
+</body>
+</html>
