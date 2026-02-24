@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BBC Suppressors — Big Black Cans">
 <meta name="twitter:description" content="Home of the Candingo .36 cal multi-purpose suppressor. Loud personality. Quiet performance.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐓</text></svg>">
+<link rel="icon" type="image/png" href="rooster.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -367,9 +367,8 @@
     max-width: 480px;
     background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
     border: 1px solid rgba(212,169,71,0.15);
-    padding: 60px 40px;
+    padding: 24px;
     position: relative;
-    text-align: center;
   }
 
   .suppressor-graphic::before {
@@ -382,59 +381,14 @@
     font-size: 10px;
     letter-spacing: 4px;
     color: var(--gold);
+    z-index: 1;
   }
 
-  .suppressor-tube {
+  .suppressor-graphic img {
     width: 100%;
-    height: 64px;
-    background: linear-gradient(180deg, #666 0%, #444 30%, #333 70%, #222 100%);
-    border-radius: 32px;
-    position: relative;
-    box-shadow:
-      0 2px 0 rgba(255,255,255,0.05),
-      0 8px 24px rgba(0,0,0,0.5),
-      inset 0 2px 4px rgba(255,255,255,0.1);
-  }
-
-  .suppressor-tube.cerakote {
-    background: linear-gradient(180deg, #333 0%, #1a1a1a 30%, #111 70%, #0a0a0a 100%);
-  }
-
-  .suppressor-tube::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: 12px;
-    width: 24px;
-    height: 40px;
-    background: linear-gradient(180deg, #555 0%, #333 100%);
-    border-radius: 4px;
-  }
-
-  .finish-toggle {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 28px;
-  }
-
-  .finish-btn {
-    background: var(--darker);
-    border: 1px solid var(--steel);
-    color: var(--steel-light);
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 8px 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .finish-btn.active, .finish-btn:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    height: auto;
+    display: block;
+    object-fit: contain;
   }
 
   .product-info .section-title {
@@ -912,11 +866,7 @@
   <div class="product-grid">
     <div class="product-visual">
       <div class="suppressor-graphic">
-        <div class="suppressor-tube" id="suppTube"></div>
-        <div class="finish-toggle">
-          <button class="finish-btn active" onclick="setFinish('cerakote')">Cerakote Black</button>
-          <button class="finish-btn" onclick="setFinish('raw')">Raw Stainless</button>
-        </div>
+        <img src="suppressor.png" alt="The Candingo .36 Cal Suppressor by BBC Suppressors">
       </div>
     </div>
     <div class="product-info">
@@ -1137,10 +1087,9 @@
     </div>
     <div class="footer-links">
       <h5>Follow the Rooster</h5>
-      <a href="#">Instagram</a>
-      <a href="#">Facebook</a>
-      <a href="#">YouTube</a>
-      <a href="#">TikTok</a>
+      <a href="https://www.facebook.com/profile.php?id=61583499460098" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/bbc_supressors/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/@TacticallyInappropriate" target="_blank" rel="noopener">YouTube</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1150,21 +1099,6 @@
 </footer>
 
 <script>
-  // Finish toggle
-  function setFinish(type) {
-    const tube = document.getElementById('suppTube');
-    const btns = document.querySelectorAll('.finish-btn');
-    btns.forEach(b => b.classList.remove('active'));
-
-    if (type === 'cerakote') {
-      tube.className = 'suppressor-tube cerakote';
-      btns[0].classList.add('active');
-    } else {
-      tube.className = 'suppressor-tube';
-      btns[1].classList.add('active');
-    }
-  }
-
   // Reviews slider
   const track = document.getElementById('reviewTrack');
   const cards = track.querySelectorAll('.review-card');
