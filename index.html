@@ -662,25 +662,39 @@
     line-height: 1.5;
   }
 
-  /* === REVIEWS === */
+  /* === REVIEWS SLIDER === */
   .reviews-section {
     text-align: center;
     padding: 100px 48px;
+    overflow: hidden;
   }
 
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px;
-    max-width: 900px;
+  .slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+  }
+
+  .slider-track-container {
+    overflow: hidden;
+    flex: 1;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .review-card {
+    min-width: 100%;
+    padding: 48px 40px;
     background: var(--darker);
     border: 1px solid rgba(212,169,71,0.15);
-    padding: 40px 32px;
     position: relative;
+    flex-shrink: 0;
   }
 
   .review-card::before {
@@ -690,31 +704,43 @@
     color: rgba(212,169,71,0.08);
     position: absolute;
     top: -10px;
-    left: 16px;
+    left: 20px;
     line-height: 1;
   }
 
   .review-stars {
     color: var(--gold);
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .review-text {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1.7;
     color: var(--white);
     font-style: italic;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     position: relative;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .review-author {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .review-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: var(--white);
   }
 
   .review-verified {
@@ -724,6 +750,52 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gold);
+  }
+
+  .slider-arrow {
+    background: transparent;
+    border: 1px solid rgba(212,169,71,0.3);
+    color: var(--gold);
+    font-size: 32px;
+    width: 52px;
+    height: 52px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+    padding-bottom: 3px;
+  }
+
+  .slider-arrow:hover {
+    background: var(--gold);
+    color: var(--black);
+    border-color: var(--gold);
+  }
+
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(212,169,71,0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+  }
+
+  .slider-dot.active {
+    background: var(--gold);
+    transform: scale(1.2);
   }
 
   /* === ANIMATIONS === */
@@ -747,7 +819,10 @@
     section { padding: 72px 24px; }
     .product-grid { grid-template-columns: 1fr; gap: 48px; }
     .product-section { padding: 72px 24px; }
-    .reviews-section { padding: 72px 24px; }
+    .reviews-section { padding: 72px 16px; }
+    .slider-arrow { width: 40px; height: 40px; font-size: 24px; }
+    .review-card { padding: 36px 20px; }
+    .review-text { font-size: 17px; }
     .mascot-section { padding: 72px 24px; }
     .specs-grid { grid-template-columns: 1fr; }
     .quote-banner { padding: 48px 24px; }
@@ -892,15 +967,80 @@
   <div class="section-title">What People Are Saying</div>
   <p class="section-body" style="text-align:center; margin: 0 auto 56px;">We don't pay for reviews. We don't have to.</p>
 
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"The mouth feel on this BBC is a 10/10, definitely would recommend"</p>
-      <div class="review-author">
-        <span class="review-verified">✓ Verified Purchaser</span>
+  <div class="slider-wrapper">
+    <button class="slider-arrow slider-prev" onclick="slideReviews(-1)">&#8249;</button>
+    <div class="slider-track-container">
+      <div class="slider-track" id="reviewTrack">
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The mouth feel on this BBC is a 10/10, definitely would recommend."</p>
+          <div class="review-author">
+            <span class="review-name">@SuppressedAndImpressed</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"My wife asked why I keep showing the neighbors my BBC. I said baby, when it's this nice, you don't keep it to yourself."</p>
+          <div class="review-author">
+            <span class="review-name">@TacticalDad_73</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I was nervous about my first BBC but the Candingo slid right on, no issues. Fit was perfect. My range buddy couldn't stop staring at it."</p>
+          <div class="review-author">
+            <span class="review-name">@QuietBoi_556</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Ordered the raw stainless because I like my cans like I like my confidence — unprotected and glistening. Zero regrets."</p>
+          <div class="review-author">
+            <span class="review-name">@PanhandlePewPew</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"My buddy said 'no way you're fitting that BBC on there.' Guess what. It fit. If it fits, it ships, baby."</p>
+          <div class="review-author">
+            <span class="review-name">@FloridaMan_Actual</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Showed up to the range with a BBC on every barrel. The RSO just shook his head and said 'that's a lot of BBC.' Yes sir, it is."</p>
+          <div class="review-author">
+            <span class="review-name">@CanCollector_Mike</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Googled 'BBC' at work to show my coworker. HR wants to see me Monday. Worth it. 5 stars."</p>
+          <div class="review-author">
+            <span class="review-name">@CorporateMag_Dump</span>
+            <span class="review-verified">✓ Verified Purchaser</span>
+          </div>
+        </div>
+
       </div>
     </div>
+    <button class="slider-arrow slider-next" onclick="slideReviews(1)">&#8250;</button>
   </div>
+
+  <div class="slider-dots" id="sliderDots"></div>
 </section>
 
 <div class="divider"></div>
@@ -1011,6 +1151,7 @@
 </footer>
 
 <script>
+  // Finish toggle
   function setFinish(type) {
     const tube = document.getElementById('suppTube');
     const btns = document.querySelectorAll('.finish-btn');
@@ -1024,6 +1165,52 @@
       btns[1].classList.add('active');
     }
   }
+
+  // Reviews slider
+  const track = document.getElementById('reviewTrack');
+  const cards = track.querySelectorAll('.review-card');
+  const dotsContainer = document.getElementById('sliderDots');
+  let currentSlide = 0;
+  let autoSlideTimer;
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goToSlide(index) {
+    currentSlide = ((index % cards.length) + cards.length) % cards.length;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentSlide);
+    });
+    resetAutoSlide();
+  }
+
+  function slideReviews(direction) {
+    goToSlide(currentSlide + direction);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 5000);
+  }
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) slideReviews(diff > 0 ? 1 : -1);
+  }, { passive: true });
+
+  // Start auto-slide
+  resetAutoSlide();
 </script>
 
 </body>
