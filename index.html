@@ -27,6 +27,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
   body {
     background: var(--black);
@@ -661,6 +662,70 @@
     line-height: 1.5;
   }
 
+  /* === REVIEWS === */
+  .reviews-section {
+    text-align: center;
+    padding: 100px 48px;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    background: var(--darker);
+    border: 1px solid rgba(212,169,71,0.15);
+    padding: 40px 32px;
+    position: relative;
+  }
+
+  .review-card::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(212,169,71,0.08);
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    line-height: 1;
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+
+  .review-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--white);
+    font-style: italic;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .review-verified {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
   /* === ANIMATIONS === */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -682,6 +747,7 @@
     section { padding: 72px 24px; }
     .product-grid { grid-template-columns: 1fr; gap: 48px; }
     .product-section { padding: 72px 24px; }
+    .reviews-section { padding: 72px 24px; }
     .mascot-section { padding: 72px 24px; }
     .specs-grid { grid-template-columns: 1fr; }
     .quote-banner { padding: 48px 24px; }
@@ -704,6 +770,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#candingo">The Candingo</a></li>
+    <li><a href="#reviews">Reviews</a></li>
     <li><a href="#why">Why BBC</a></li>
     <li><a href="#buy">Buy Now</a></li>
   </ul>
@@ -819,6 +886,25 @@
   <p class="quote-attr">— The Rooster, Probably</p>
 </div>
 
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="section-label">Word on the Street</div>
+  <div class="section-title">What People Are Saying</div>
+  <p class="section-body" style="text-align:center; margin: 0 auto 56px;">We don't pay for reviews. We don't have to.</p>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"The mouth feel on this BBC is a 10/10, definitely would recommend"</p>
+      <div class="review-author">
+        <span class="review-verified">✓ Verified Purchaser</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- WHY BBC -->
 <section class="why-section" id="why">
   <div class="section-label">The BBC Difference</div>
@@ -899,16 +985,16 @@
     </div>
     <div class="footer-links">
       <h5>Company</h5>
-      <a href="#">About Us</a>
-      <a href="#">The Candingo</a>
+      <a href="#about">About Us</a>
+      <a href="#candingo">The Candingo</a>
       <a href="mailto:contact@bbcsuppressors.com">Contact</a>
-      <a href="#">FAQ</a>
+      <a href="#reviews">Reviews</a>
     </div>
     <div class="footer-links">
       <h5>Legal</h5>
-      <a href="#">NFA Compliance</a>
-      <a href="#">Terms & Conditions</a>
-      <a href="#">Privacy Policy</a>
+      <a href="mailto:contact@bbcsuppressors.com">NFA Compliance</a>
+      <a href="mailto:contact@bbcsuppressors.com">Terms & Conditions</a>
+      <a href="mailto:contact@bbcsuppressors.com">Privacy Policy</a>
     </div>
     <div class="footer-links">
       <h5>Follow the Rooster</h5>
