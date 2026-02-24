@@ -7,10 +7,12 @@
 <meta name="description" content="BBC Suppressors — Big Black Cans. Home of the Candingo .36 cal multi-purpose suppressor. Designed from scratch in Milton, Florida. 17-4 stainless steel. Exclusively at Firearms Direct Club.">
 <meta property="og:title" content="BBC Suppressors — Big Black Cans">
 <meta property="og:description" content="Home of the Candingo .36 cal multi-purpose suppressor. Loud personality. Quiet performance. Milton, FL.">
+<meta property="og:image" content="https://bbcsuppressors.com/rooster.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BBC Suppressors — Big Black Cans">
 <meta name="twitter:description" content="Home of the Candingo .36 cal multi-purpose suppressor. Loud personality. Quiet performance.">
+<meta name="twitter:image" content="https://bbcsuppressors.com/rooster.png">
 <link rel="icon" type="image/png" href="rooster.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -38,16 +40,6 @@
   }
 
   body.menu-open { overflow: hidden; }
-
-  /* === TROPICAL NOISE TEXTURE OVERLAY === */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-  }
 
   /* === NAVIGATION === */
   nav {
@@ -125,6 +117,7 @@
     gap: 5px;
     z-index: 200;
     transition: border-color 0.3s;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .hamburger:hover { border-color: var(--gold); }
@@ -136,6 +129,7 @@
     background: var(--gold);
     transition: all 0.3s ease;
     transform-origin: center;
+    pointer-events: none;
   }
 
   .hamburger.open .hamburger-bar:nth-child(1) {
@@ -181,6 +175,7 @@
     transition: color 0.3s, transform 0.3s, opacity 0.3s;
     opacity: 0;
     transform: translateY(20px);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-menu.open a {
@@ -900,6 +895,10 @@
     section { padding: 72px 24px; }
     .product-grid { grid-template-columns: 1fr; gap: 48px; }
     .product-section { padding: 72px 24px; }
+    .specs-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .specs-grid .spec-value { font-size: 18px; }
+    .specs-grid .spec-label { font-size: 10px; letter-spacing: 2px; }
+    .specs-grid .spec-item { padding-left: 12px; }
     .reviews-section { padding: 72px 0; overflow: hidden; }
     .slider-wrapper { flex-direction: column; gap: 20px; padding: 0; }
     .slider-arrow { display: none; }
@@ -911,7 +910,6 @@
     .slider-dots { padding: 0 16px; }
     .mascot-section { padding: 72px 24px; }
     .mascot-emoji { width: 140px; height: 140px; }
-    .specs-grid { grid-template-columns: 1fr; }
     .hero-cta { flex-direction: column; align-items: center; }
     .hero-cta .btn-primary, .hero-cta .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
     .quote-banner { padding: 48px 24px; }
@@ -946,7 +944,7 @@
     <li><a href="#why">Why BBC</a></li>
     <li><a href="#buy">Buy Now</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
     <span class="hamburger-bar"></span>
     <span class="hamburger-bar"></span>
     <span class="hamburger-bar"></span>
@@ -955,11 +953,11 @@
 
 <!-- MOBILE MENU OVERLAY -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMobileMenu()">About</a>
-  <a href="#candingo" onclick="closeMobileMenu()">The Candingo</a>
-  <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
-  <a href="#why" onclick="closeMobileMenu()">Why BBC</a>
-  <a href="#buy" onclick="closeMobileMenu()">Buy Now</a>
+  <a href="#about">About</a>
+  <a href="#candingo">The Candingo</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#why">Why BBC</a>
+  <a href="#buy">Buy Now</a>
   <div class="mobile-menu-footer">
     <p>Milton, FL &bull; Est. 2025</p>
     <a href="mailto:contact@bbcsuppressors.com">contact@bbcsuppressors.com</a>
@@ -1084,7 +1082,7 @@
   <p class="section-body" style="text-align:center; margin: 0 auto 56px;">We don't pay for reviews. We don't have to.</p>
 
   <div class="slider-wrapper">
-    <button class="slider-arrow slider-prev" onclick="slideReviews(-1)">&#8249;</button>
+    <button class="slider-arrow slider-prev">&#8249;</button>
     <div class="slider-track-container">
       <div class="slider-track" id="reviewTrack">
 
@@ -1153,7 +1151,7 @@
 
       </div>
     </div>
-    <button class="slider-arrow slider-next" onclick="slideReviews(1)">&#8250;</button>
+    <button class="slider-arrow slider-next">&#8250;</button>
   </div>
 
   <div class="slider-dots" id="sliderDots"></div>
@@ -1261,55 +1259,80 @@
 
 <script>
   // ─── MOBILE MENU ───
-  function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const burger = document.getElementById('hamburger');
-    const isOpen = menu.classList.contains('open');
+  // Using addEventListener instead of inline onclick for better mobile compatibility
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
 
+  hamburger.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var isOpen = mobileMenu.classList.contains('open');
     if (isOpen) {
       closeMobileMenu();
     } else {
-      menu.classList.add('open');
-      burger.classList.add('open');
-      burger.setAttribute('aria-label', 'Close menu');
+      mobileMenu.classList.add('open');
+      hamburger.classList.add('open');
+      hamburger.setAttribute('aria-label', 'Close menu');
       document.body.classList.add('menu-open');
     }
+  });
+
+  // Attach close to each mobile menu link
+  var menuLinks = mobileMenu.querySelectorAll('a');
+  for (var i = 0; i < menuLinks.length; i++) {
+    menuLinks[i].addEventListener('click', function() {
+      closeMobileMenu();
+    });
   }
 
   function closeMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const burger = document.getElementById('hamburger');
-    menu.classList.remove('open');
-    burger.classList.remove('open');
-    burger.setAttribute('aria-label', 'Open menu');
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-label', 'Open menu');
     document.body.classList.remove('menu-open');
   }
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeMobileMenu();
   });
 
   // ─── REVIEWS SLIDER ───
-  const track = document.getElementById('reviewTrack');
-  const cards = track.querySelectorAll('.review-card');
-  const dotsContainer = document.getElementById('sliderDots');
-  let currentSlide = 0;
-  let autoSlideTimer;
+  var track = document.getElementById('reviewTrack');
+  var cards = track.querySelectorAll('.review-card');
+  var dotsContainer = document.getElementById('sliderDots');
+  var currentSlide = 0;
+  var autoSlideTimer;
 
-  cards.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-    dot.onclick = () => goToSlide(i);
+  // Build dots
+  for (var d = 0; d < cards.length; d++) {
+    var dot = document.createElement('button');
+    dot.className = 'slider-dot' + (d === 0 ? ' active' : '');
+    dot.setAttribute('data-index', d);
+    dot.addEventListener('click', function() {
+      goToSlide(parseInt(this.getAttribute('data-index')));
+    });
     dotsContainer.appendChild(dot);
+  }
+
+  // Arrow buttons
+  document.querySelector('.slider-prev').addEventListener('click', function() {
+    slideReviews(-1);
+  });
+  document.querySelector('.slider-next').addEventListener('click', function() {
+    slideReviews(1);
   });
 
   function goToSlide(index) {
     currentSlide = ((index % cards.length) + cards.length) % cards.length;
-    track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    dotsContainer.querySelectorAll('.slider-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === currentSlide);
-    });
+    track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+    var dots = dotsContainer.querySelectorAll('.slider-dot');
+    for (var i = 0; i < dots.length; i++) {
+      if (i === currentSlide) {
+        dots[i].classList.add('active');
+      } else {
+        dots[i].classList.remove('active');
+      }
+    }
     resetAutoSlide();
   }
 
@@ -1319,15 +1342,16 @@
 
   function resetAutoSlide() {
     clearInterval(autoSlideTimer);
-    autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 8000);
+    autoSlideTimer = setInterval(function() { goToSlide(currentSlide + 1); }, 8000);
   }
 
-  let touchStartX = 0;
-  let touchEndX = 0;
-  track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-  track.addEventListener('touchend', e => {
+  // Touch/swipe support
+  var touchStartX = 0;
+  var touchEndX = 0;
+  track.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  track.addEventListener('touchend', function(e) {
     touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
+    var diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 50) slideReviews(diff > 0 ? 1 : -1);
   }, { passive: true });
 
