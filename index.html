@@ -282,9 +282,13 @@
   }
 
   .mascot-emoji {
-    font-size: 100px;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
     margin-bottom: 24px;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
     filter: drop-shadow(0 0 40px rgba(212,169,71,0.2));
   }
 
@@ -824,6 +828,7 @@
     .review-card { padding: 36px 20px; }
     .review-text { font-size: 17px; }
     .mascot-section { padding: 72px 24px; }
+    .mascot-emoji { width: 140px; height: 140px; }
     .specs-grid { grid-template-columns: 1fr; }
     .quote-banner { padding: 48px 24px; }
     .buy-section { padding: 80px 24px; }
@@ -871,7 +876,7 @@
 
 <!-- ABOUT / MASCOT -->
 <section class="mascot-section" id="about">
-  <span class="mascot-emoji">🐓</span>
+  <img src="rooster.png" alt="BBC Suppressors Mascot — Big Black Rooster" class="mascot-emoji">
   <div class="section-label">Meet the Mascot</div>
   <div class="section-title">Big Cluck Energy</div>
   <p class="section-body">
