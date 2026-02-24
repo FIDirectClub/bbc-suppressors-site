@@ -59,6 +59,18 @@
     border-bottom: 1px solid rgba(212,169,71,0.15);
   }
 
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-brand img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
@@ -664,6 +676,9 @@
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
+    .nav-brand img { width: 36px; height: 36px; }
+    .nav-logo { font-size: 22px; }
+    .nav-logo span { font-size: 10px; }
     section { padding: 72px 24px; }
     .product-grid { grid-template-columns: 1fr; gap: 48px; }
     .product-section { padding: 72px 24px; }
@@ -679,9 +694,12 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <div class="nav-logo">
-    BBC SUPPRESSORS
-    <span>Big Black Cans &bull; Milton, FL</span>
+  <div class="nav-brand">
+    <img src="logo.png" alt="BBC Suppressors Rooster Logo">
+    <div class="nav-logo">
+      BBC SUPPRESSORS
+      <span>Big Black Cans &bull; Milton, FL</span>
+    </div>
   </div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -857,9 +875,12 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="nav-logo">
-        BBC SUPPRESSORS
-        <span>Big Black Cans &bull; Milton, FL</span>
+      <div class="nav-brand">
+        <img src="logo.png" alt="BBC Suppressors Rooster Logo">
+        <div class="nav-logo">
+          BBC SUPPRESSORS
+          <span>Big Black Cans &bull; Milton, FL</span>
+        </div>
       </div>
       <p style="margin-top:12px;">Loud personality. Quiet performance. Florida's finest suppressor company, featuring the world's most armed poultry.</p>
     </div>
