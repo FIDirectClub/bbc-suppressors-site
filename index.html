@@ -27,13 +27,14 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; overflow-x: hidden; }
 
   body {
     background: var(--black);
     color: var(--white);
     font-family: 'Barlow', sans-serif;
     overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* === TROPICAL NOISE TEXTURE OVERLAY === */
@@ -625,6 +626,7 @@
     text-align: center;
     padding: 100px 48px;
     overflow: hidden;
+    max-width: 100vw;
   }
 
   .slider-wrapper {
@@ -634,11 +636,14 @@
     max-width: 1100px;
     margin: 0 auto;
     position: relative;
+    overflow: hidden;
+    width: 100%;
   }
 
   .slider-track-container {
     overflow: hidden;
     flex: 1;
+    min-width: 0;
   }
 
   .slider-track {
@@ -648,11 +653,13 @@
 
   .review-card {
     min-width: 100%;
+    max-width: 100%;
     padding: 48px 40px;
     background: var(--darker);
     border: 1px solid rgba(212,169,71,0.15);
     position: relative;
     flex-shrink: 0;
+    overflow: hidden;
   }
 
   .review-card::before {
@@ -681,8 +688,11 @@
     margin-bottom: 28px;
     position: relative;
     max-width: 700px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .review-author {
@@ -777,11 +787,15 @@
     section { padding: 72px 24px; }
     .product-grid { grid-template-columns: 1fr; gap: 48px; }
     .product-section { padding: 72px 24px; }
-    .reviews-section { padding: 72px 16px; }
-    .slider-wrapper { flex-direction: column; gap: 20px; }
+    .reviews-section { padding: 72px 0; overflow: hidden; }
+    .slider-wrapper { flex-direction: column; gap: 20px; padding: 0; }
     .slider-arrow { display: none; }
-    .review-card { padding: 36px 24px; }
-    .review-text { font-size: 16px; }
+    .slider-track-container { overflow: hidden; width: 100vw; max-width: 100vw; }
+    .slider-track { width: 100%; }
+    .review-card { padding: 32px 24px; min-width: 100vw; max-width: 100vw; box-sizing: border-box; }
+    .review-text { font-size: 15px; word-wrap: break-word; overflow-wrap: break-word; padding: 0 8px; max-width: 100%; }
+    .review-author { flex-direction: column; gap: 4px; }
+    .slider-dots { padding: 0 16px; }
     .mascot-section { padding: 72px 24px; }
     .mascot-emoji { width: 140px; height: 140px; }
     .specs-grid { grid-template-columns: 1fr; }
@@ -1104,7 +1118,7 @@
     <div class="footer-links">
       <h5>Follow the Rooster</h5>
       <a href="https://www.facebook.com/profile.php?id=61583499460098" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.instagram.com/bbc_supressors/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/bbc_suppressors/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.youtube.com/@TacticallyInappropriate" target="_blank" rel="noopener">YouTube</a>
     </div>
   </div>
